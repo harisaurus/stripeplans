@@ -9,10 +9,11 @@ class User < ActiveRecord::Base
 
    def create_customer
     token = self.stripe_card_token
+    plan = self.plan_id
     
     customer = Stripe::Customer.create(
     :card => token,
-    :plan => 'pro',
+    :plan => plan,
       :email => self.email
   )         
      end

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
  
   def configure_permitted_parameters
     #This allows the attributes to be accessible at sign up. I had to add email and password after adding token. 
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :stripe_card_token, :email, :password) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:stripe_card_token) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :stripe_card_token, :plan_id, :email, :password) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :stripe_card_token, :plan_id) }
   end
 end
